@@ -8,3 +8,8 @@
 3. Rahmat Ramadhan - 2301020032
 4. Muhammad Rizky Sudaryo - 2301020038 ( Ketua )
 5. Rodiyan Ramadhani - 2301020063
+
+### Spesifikasi Projek : 
+1. Framework CI4
+2. MySQL
+3. Php 8++
