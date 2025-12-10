@@ -1,0 +1,360 @@
+/* RESET & BASE */
+:root {
+    /* Warna Utama: Kuning Emas yang Elegan */
+    --primary: #fbc02d;       
+    --primary-light: #fff9c4; /* Kuning muda lembut */
+    --primary-dark: #f57f17;  /* Oranye emas tua */
+    
+    /* Warna Text: Coklat Tua (Lebih estetik di atas kuning daripada hitam pekat) */
+    --text-dark: #3e2723;     
+    --text-muted: #795548;
+    
+    --white: #ffffff;
+    --shadow: 0 10px 30px rgba(251, 192, 45, 0.15); /* Bayangan agak kekuningan */
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+body {
+    /* Latar Belakang: Gradasi Putih ke Kuning Lembut */
+    background: linear-gradient(135deg, #ffffff 0%, #fff59d 100%);
+    min-height: 100vh;
+    color: var(--text-dark);
+}
+
+/* LAYOUT WRAPPERS */
+.main-wrapper {
+    display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px;
+}
+.admin-wrapper { padding: 40px 20px; }
+
+/* CARD COMPONENTS */
+.card-container, .card {
+    background: var(--white); 
+    border-radius: 25px; /* Lebih bulat biar cute sesuai nama PuWu */
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(255, 235, 59, 0.2); /* Border tipis kuning */
+}
+.card-container { width: 100%; max-width: 450px; padding: 35px; position: relative; overflow: hidden; }
+.card { padding: 25px; margin-bottom: 20px; }
+
+/* HEADER */
+.header-section { text-align: center; margin-bottom: 30px; }
+.header-section h2 { 
+    color: var(--primary-dark); 
+    font-weight: 800; 
+    font-size: 2rem;
+    letter-spacing: -1px;
+}
+.header-section p { color: var(--text-muted); }
+.icon-boat { 
+    font-size: 3.5rem; 
+    color: var(--primary); 
+    animation: float 3s ease-in-out infinite; 
+    margin-bottom: 10px; 
+    text-shadow: 2px 2px 0px #fff9c4;
+}
+
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+/* FORM ELEMENTS */
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-dark); font-size: 0.9rem; }
+.form-control {
+    width: 100%; padding: 14px; border: 2px solid #fff176; background: #fffde7; border-radius: 12px; font-size: 1rem; outline: none; transition: 0.3s; color: var(--text-dark);
+}
+.form-control:focus { border-color: var(--primary); background: #fff; box-shadow: 0 0 10px rgba(251, 192, 45, 0.2); }
+
+/* BUTTONS (GRADASI PUTIH KUNING) */
+.btn {
+    width: 100%; padding: 15px; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; transition: 0.3s; font-size: 1rem; margin-top: 15px; text-transform: uppercase; letter-spacing: 1px;
+}
+
+.btn-primary {
+    /* Gradasi dari Kuning Emas ke Putih */
+    background: linear-gradient(45deg, var(--primary), #fff176, #ffffff);
+    background-size: 200% auto;
+    
+    /* Text harus gelap agar terbaca di atas kuning/putih */
+    color: var(--text-dark); 
+    box-shadow: 0 5px 15px rgba(249, 168, 37, 0.3);
+    border: 1px solid #fff59d;
+}
+
+.btn-primary:hover { 
+    background-position: right center; /* Efek gerak gradasi saat hover */
+    transform: translateY(-3px); 
+    box-shadow: 0 8px 20px rgba(249, 168, 37, 0.4);
+}
+
+.btn-secondary { background: transparent; color: var(--text-muted); margin-top: 5px; text-transform: none; letter-spacing: 0; }
+.btn-secondary:hover { color: var(--primary-dark); }
+
+/* ROUTE SELECTION */
+.rute-option {
+    border: 2px solid #fff9c4; background: #fff; padding: 15px; border-radius: 15px; margin-bottom: 15px; cursor: pointer; transition: 0.3s; display: flex; justify-content: space-between; align-items: center;
+}
+.rute-option:hover { border-color: var(--primary); transform: scale(1.02); }
+.rute-option.selected { 
+    background: #fffde7; /* Kuning sangat muda */
+    border-color: var(--primary); 
+    box-shadow: 0 5px 15px rgba(251, 192, 45, 0.1);
+}
+.route-text { display: block; font-weight: 700; color: var(--text-dark); font-size: 0.95rem; }
+.price-tag { font-size: 0.85rem; color: var(--text-muted); }
+
+.badge-stok { background: var(--primary); color: var(--text-dark); padding: 5px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; }
+.badge-stok.habis { background: #e74c3c; color: white; }
+
+/* PAGES ANIMATION */
+.page-section { display: none; animation: fadeIn 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55); } /* Efek Bouncy */
+.page-section.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+/* TIKET */
+.tiket-card {
+    border: 2px dashed var(--primary); background: #fffde7; border-radius: 15px; padding: 25px; position: relative; margin-top: 20px;
+}
+.tiket-header { text-align: center; color: var(--text-muted); font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+.tiket-id { color: var(--primary-dark); font-weight: 900; letter-spacing: 2px; margin: 10px 0; font-size: 1.8rem; text-align: center; word-break: break-all; }
+.tiket-row { display: flex; justify-content: space-between; border-bottom: 1px dashed #fbc02d; padding: 10px 0; font-size: 0.95rem; color: var(--text-dark); }
+.tiket-total { margin-top: 20px; text-align: center; font-size: 1.2rem; color: var(--primary-dark); font-weight: 800; }
+
+/* ADMIN SPECIFIC */
+.container { max-width: 900px; margin: 0 auto; }
+.admin-header-card {
+    background: linear-gradient(135deg, #fbc02d 0%, #f57f17 100%); color: var(--text-dark); padding: 30px; border-radius: 20px; display: flex; justify-content: space-between; margin-bottom: 25px; align-items: center;
+}
+.server-status .dot { display: inline-block; width: 10px; height: 10px; background: #fff; border-radius: 50%; box-shadow: 0 0 5px white; }
+.table th { text-align: left; padding: 15px; background: #fff9c4; color: var(--text-dark); border-bottom: 2px solid var(--primary); }
+
+.admin-container {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f4f6f9; /* Abu-abu muda clean */
+}
+
+/* SIDEBAR (Mirip yang Ungu di gambar, tapi kita pake tema Kuning/Emas) */
+.sidebar {
+    width: 260px;
+    background: linear-gradient(180deg, #fbc02d 0%, #f57f17 100%);
+    color: #fff;
+    padding: 20px;
+    position: fixed;
+    height: 100vh;
+    left: 0; top: 0;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 5px 0 15px rgba(0,0,0,0.05);
+}
+
+.sidebar .logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+}
+.sidebar .logo span { font-weight: 300; opacity: 0.8; }
+
+.sidebar .menu { display: flex; flex-direction: column; gap: 10px; flex-grow: 1; }
+
+.sidebar .menu a {
+    text-decoration: none;
+    color: rgba(255,255,255,0.8);
+    padding: 15px 20px;
+    border-radius: 12px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: 0.3s;
+}
+
+.sidebar .menu a:hover, .sidebar .menu a.active {
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+    font-weight: 700;
+}
+
+.sidebar .menu a.logout { margin-top: auto; color: #ffebee; }
+
+/* MAIN CONTENT AREA */
+.main-content {
+    margin-left: 260px; /* Sesuai lebar sidebar */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* TOP BAR */
+.top-bar {
+    background: #fff;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+}
+
+.search-bar {
+    background: #f4f6f9;
+    padding: 10px 20px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #999;
+    width: 300px;
+}
+.search-bar input { border: none; background: transparent; outline: none; width: 100%; color: #555; }
+
+.user-profile { display: flex; align-items: center; gap: 20px; }
+.notif { position: relative; cursor: pointer; color: #777; font-size: 1.2rem; }
+.notif .dot { position: absolute; top: 0; right: 0; width: 8px; height: 8px; background: red; border-radius: 50%; }
+
+.profile-info { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 0.9rem; }
+.profile-info img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid #fbc02d; }
+
+/* CONTENT BODY */
+.content-body { padding: 30px; }
+
+/* BANNER WIDGET (Yg Hello Mr Smith) */
+.welcome-banner {
+    background: linear-gradient(135deg, #7e57c2 0%, #512da8 100%); /* Ungu seperti referensi, atau ganti gold kalau mau */
+    /* Opsional: Ganti Gold biar senada */
+    background: linear-gradient(135deg, #fbc02d 0%, #f9a825 100%);
+    
+    border-radius: 20px;
+    padding: 30px;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 20px rgba(251, 192, 45, 0.3);
+}
+.welcome-text h2 { margin-bottom: 10px; font-size: 1.8rem; }
+.welcome-text p { opacity: 0.9; max-width: 500px; line-height: 1.5; }
+.welcome-img img { height: 150px; } /* Ilustrasi */
+
+/* CARDS GRID */
+.dashboard-grid {
+    display: grid;
+    /* Kita bagi layar menjadi 3 jalur terpisah:
+       - Kolom 1 (Tabel): Lebih lebar (50% layar)
+       - Kolom 2 (Stok): (25% layar)
+       - Kolom 3 (Tiket): (25% layar)
+    */
+    grid-template-columns: 2fr 1fr 1fr; 
+    
+    /* Jarak antar kartu lebih renggang agar terlihat 'terpisah' */
+    gap: 30px; 
+    
+    /* Agar kartu tidak saling tarik-menarik tingginya (independen) */
+    align-items: start; 
+    margin-top: 20px;
+}
+
+/* KARTU TABEL (Kiri) */
+.main-table {
+    /* Pastikan dia punya background sendiri & terpisah */
+    background: #fff;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    min-height: 300px; /* Tinggi minimal agar rapi */
+}
+
+/* WIDGET TENGAH & KANAN (Stok & Tiket) */
+.widget-center, .widget-right {
+    background: #fff;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    
+    /* Isi konten rata tengah */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    /* Tinggi disamakan agar sejajar rapi, tapi terpisah */
+    height: 300px; 
+}
+
+/* RESPONSIVE:
+   Jika layar mengecil (Laptop kecil/Tablet),
+   ubah susunan jadi tabel di atas, dua widget di bawahnya (berjajar)
+*/
+@media (max-width: 1100px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr 1fr; /* Jadi 2 kolom */
+    }
+    .main-table {
+        grid-column: span 2; /* Tabel lebar penuh di atas */
+    }
+}
+
+/* Jika layar HP (Kecil banget), tumpuk semua ke bawah */
+@media (max-width: 768px) {
+    .dashboard-grid {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.panel-header { display: flex; justify-content: space-between; margin-bottom: 20px; align-items: center; }
+.panel-header h3 { font-size: 1.1rem; color: #333; }
+.btn-small { padding: 5px 15px; font-size: 0.8rem; border-radius: 15px; background: #e3f2fd; color: #1565c0; text-decoration: none; }
+
+/* TABLE STYLE */
+.table-clean { width: 100%; border-collapse: collapse; }
+.table-clean th { text-align: left; padding: 15px; color: #888; font-weight: 500; font-size: 0.9rem; }
+.table-clean td { padding: 15px; border-top: 1px solid #f0f0f0; color: #444; vertical-align: middle; }
+.user-cell { display: flex; align-items: center; gap: 10px; font-weight: 600; }
+.user-avatar { width: 35px; height: 35px; border-radius: 50%; background: #eee; }
+
+/* Status Badge */
+.status-badge { padding: 5px 12px; border-radius: 15px; font-size: 0.8rem; font-weight: 600; }
+.status-done { background: #e8f5e9; color: #2e7d32; }
+.status-wait { background: #fff8e1; color: #f57f17; }
+
+/* 1. HILANGKAN GARIS BAWAH DI TOMBOL */
+.btn, a.btn, .btn-primary, .btn-small {
+    text-decoration: none !important; /* Hilangkan garis link */
+    display: inline-block; /* Agar padding tombol rapi */
+}
+
+/* 2. GAYA BARU HEADER KANAN (ADMINISTRATOR) */
+.top-right-label {
+    display: flex;
+    align-items: center;
+}
+
+.badge-admin {
+    background: #fff8e1; /* Latar kuning sangat muda */
+    color: #f57f17;      /* Teks Oranye Emas */
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border: 2px solid #fbc02d;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Update Sidebar Logo agar pas tanpa tulisan Admin */
+.sidebar .logo {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #fff;
+    letter-spacing: -1px;
+}
